@@ -22,6 +22,7 @@ function App() {
         <Route exact path="/perfil" component={PerfilTec} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/registrar" component={Register} />
+        <Route exact path="/admin" component={Admin} />
       </Switch>
     );
   };
