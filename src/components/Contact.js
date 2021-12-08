@@ -2,7 +2,7 @@ import React from 'react'
 
 const Contact = () => {
     return (
-        <section class="page-section" id="contact">
+        <section class="page-section" id="login">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6 text-center">
@@ -16,11 +16,11 @@ const Contact = () => {
                   
                     <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                         
-                        <div class="form-floating mb-3">
+                        {/* <div class="form-floating mb-3">
                             <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                             <label for="name">Full name</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                        </div>
+                        </div> */}
                        
                         <div class="form-floating mb-3">
                             <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />

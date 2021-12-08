@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <Container>
       <Card />
-      <Card />
+      
     </Container>
   );
 };

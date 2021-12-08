@@ -13,7 +13,7 @@ const Navbar = () => {
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
                         <li class="nav-item"><Link className="nav-link" to='/registrar'>Register</Link></li>
                         <li class="nav-item"><Link className="nav-link" to='/home'>Home</Link></li>
                     </ul>

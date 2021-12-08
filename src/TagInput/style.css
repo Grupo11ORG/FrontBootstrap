@@ -1,0 +1,7 @@
+.tag-input{
+  border: 0;
+}
+
+.tag-input:focus{
+  outline: none;
+}

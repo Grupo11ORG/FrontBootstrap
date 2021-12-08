@@ -11,6 +11,7 @@ import {
 import Home from "./pages/Home";
 import PerfilTec from "./pages/PerfilTec";
 import Register from "./pages/Register";
+import Admin from "./pages/Admin";
 
 function App() {
   const Routing = () => {
