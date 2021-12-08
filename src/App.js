@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routing, Switch } from 'react-router-do
 import Home from './pages/Home';
 import PerfilTec from './pages/PerfilTec';
 import Register from './pages/Register';
+import Admin from './pages/Admin';
 
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
         <Route exact path="/perfil" component={PerfilTec} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/registrar" component={Register} />
+        <Route exact path="/admin" component={Admin}/>
       </Switch>
-
 
     )
   };

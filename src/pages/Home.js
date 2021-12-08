@@ -6,8 +6,7 @@ const Home = () => {
     return (
         <Container>
             <Card/>
-            <Card/>
-            
+            <Card/> 
         </Container>
     )
 }
