@@ -3,42 +3,19 @@ import { useHistory } from 'react-router-dom';
 import { registerSchema } from "../validations/vRegister";
 import { useState, useEffect } from "react";
 
-
-
-
-
-
-
-
 const initialForm = {
-  nombre_apellido: "",
-  dni: "",
-  fecha_Nac: "",
-  sexo: "",
-  telefono: "",
   correo: "",
   username: "",
   password: "",
   conf_password: "",
-
 };
 
-
-
-
-
-
-
 const Register = () => {
-
   const [form, setForm] = useState(initialForm)
   const [disableBtn, setDisableBtn] = useState(true);
   const history = useHistory();
- 
   const [mostrarMensaje, setMostrarMensaje] = useState(null)
   const History = useHistory()
-
-
 
   const registrarnuevoUsuario = async () => {
     let myHeaders = new Headers();
@@ -51,7 +28,7 @@ const Register = () => {
       redirect: 'follow'
     }
 
-    fetch('https://https://tecnosearch.herokuapp.com/register', options)
+    fetch('https://tecnosearch.herokuapp.com/register', options)
       .then(res => res.json())
       .then(
         (res) => {
