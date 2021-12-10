@@ -23,7 +23,7 @@ const PerfilTec = () => {
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h4 className="text-right">Profile Settings</h4>
             </div>
-          S  <div className="row mt-2">
+            <div className="row mt-2">
               <div className="col-md-6">
                 <label className="labels">Name</label>
                 <input

@@ -39,7 +39,7 @@ const Admin = () => {
               <td>Nico</td>
               <td>KaisaLover</td>
               <td>nickdaboom2@gmail.com</td>
-              <td>Papasito</td>
+              <td>Administrador</td>
               <td>Activo</td>
               <td>
                 <button className="btn btn-danger">Eliminar</button>
@@ -52,9 +52,9 @@ const Admin = () => {
               <td>3</td>
               <td>Gaby</td>
               <td>4Chan</td>
-              <td>tuminaenelnumerosublime@gmail.com</td>
+              <td>sublime@gmail.com</td>
               <td>Especialista</td>
-              <td>Pasivo, digo Inactivo</td>
+              <td>Inactivo</td>
               <td>
                 <button className="btn btn-danger">Eliminar</button>
               </td>

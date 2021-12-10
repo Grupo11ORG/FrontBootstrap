@@ -12,25 +12,49 @@ import Home from "./pages/Home";
 import PerfilTec from "./pages/PerfilTec";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
+import { Session } from "./context/Session";
+import { useState } from "react";
+
+
 
 function App() {
+
+  const [session, setSession] = useState(null);
   const Routing = () => {
-    return (
+    
+
+      if (session != null){
+        return(
       <Switch>
         <Route exact path="/" component={Principal} />
-        <Route exact path="/principal" component={Principal} />
+        {/* <Route exact path="/principal" component={Principal} /> */}
         <Route exact path="/home" component={Home} />
         <Route exact path="/perfil" component={PerfilTec} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/registrar" component={Register} />
         <Route exact path="/admin" component={Admin} />
       </Switch>
-    );
-  };
+        )};
+  
+  
+
   return (
-    <Router>
-      <Routing />
-    </Router>
+    <Switch>
+    <Route exact path="/" component={Principal} />
+    {/* <Route exact path="/principal" component={Principal} /> */}
+    <Route exact path="/home" component={Home} />
+    <Route exact path="/perfil" component={PerfilTec} />
+    <Route exact path="/login" component={Login} />
+    <Route exact path="/registrar" component={Register} />
+    <Route exact path="/admin" component={Admin} />
+  </Switch>
+  )}
+  return (
+    <Session.Provider value= {[session, setSession]}>
+      <Router>
+        <Routing />
+      </Router>
+    </Session.Provider>
   );
 }
 
