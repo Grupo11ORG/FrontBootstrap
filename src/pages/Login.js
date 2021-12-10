@@ -51,7 +51,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const res = await fetch('https://https://tecnosearch.herokuapp.com/api/profesionales/login', {
+    const res = await fetch('https://tecnosearch.herokuapp.com/api/login', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

@@ -1,3 +1,6 @@
+import React from "react"
+import Modal from "./Modal"
+
 const Card = () => {
   return (
     <>
@@ -13,7 +16,7 @@ const Card = () => {
         <h5 class="card-title">Martin Leguizamon</h5>
         <p class="card-text">Más de 5 años de experiencia trabajando para usted,reparacion de celulares y tablets.</p>
         <p class="card-text"><small class="text-muted">Celulares</small></p>
-        <button class="btn btn-primary btn-xs" style={{ marginLeft: "60%" }}><i class="glyphicon glyphicon-plus"></i> ver más! </button>
+        <button class="btn btn-primary btn-xs" style={{ marginLeft: "60%" }}><i class="glyphicon glyphicon-plus"></i> Ver más! </button>
         <button class="btn btn-info btn-xs" style={{ marginLeft: "10px" }}><i class="glyphicon glyphicon-phone"></i> Tec</button>
 
       </div>
