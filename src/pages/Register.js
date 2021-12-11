@@ -1,95 +1,93 @@
 import Container from "../layout/Container";
-import { useHistory } from 'react-router-dom';
-import { registerSchema } from "../validations/vRegister";
-import { useState, useEffect } from "react";
+import * as Yup from "yup";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const initialForm = {
-  correo: "",
-  username: "",
+  email: "",
   password: "",
-  conf_password: "",
+  rol: "comun",
+  username: "",
 };
 
 const Register = () => {
-  const [form, setForm] = useState(initialForm)
-  const [disableBtn, setDisableBtn] = useState(true);
+  const validationRegister = Yup.object().shape({
+    nombre_usuario: Yup.string()
+      .required("El Username es requerido"),
+    email: Yup.string()
+      .required("El Email es requerido")
+      .email("El formato del Email es invalido"),
+    password: Yup.string()
+      .required("El Password es requerido")
+      .max(15, "El Password no debe exceder los 15 caracteres"),
+    confirmPassword: Yup.string()
+      .required("La Confirmación de la Contraseña es requerida")
+      .oneOf([Yup.ref("password"), null], "Las Contraseñas deben ser iguales"),
+  });
+  const [form, setForm] = useState(initialForm);
   const history = useHistory();
-  const [mostrarMensaje, setMostrarMensaje] = useState(null)
-  const History = useHistory()
-
-  const registrarnuevoUsuario = async () => {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const options = {
-      method: 'POST',
-      headers: myHeaders,
-      body: JSON.stringify(form),
-      redirect: 'follow'
-    }
-
-    fetch('https://tecnosearch.herokuapp.com/register', options)
-      .then(res => res.json())
-      .then(
-        (res) => {
-          console.log(res)
-          if (!res.errores) {
-            // console.log(res) 
-            setMostrarMensaje({ message: 'Usuario agregado correctamente', style: 'alert alert-success' });
-
-            setTimeout(() => {
-              setMostrarMensaje(null)
-              history.push('/login')
-            }, 3000)
-
-          } else {
-            setMostrarMensaje({ message: 'El usuario ya existe', style: 'alert alert-danger' });
-
-            setTimeout(() => {
-              setMostrarMensaje(null)
-
-            }, 3000)
-          }
-
-
-
-
-        },
-        (errors) => { console.log(errors) })
-
-
-    // console.log(options);
-
-  }
-
+  const [mostrarMensaje, setMostrarMensaje] = useState(null);
 
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
-    }
+      [e.target.name]: e.target.value,
+    });
+    console.log(form);
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(validationRegister) });
 
-    )
+  
+  const registrarnuevoUsuario = async () => {
+    const dataJson = JSON.stringify(form)
+    const options = {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: dataJson,
+    };
 
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    registrarnuevoUsuario()
+    fetch("https://tecnosearch.herokuapp.com/api/register", options)
+      .then((res) => res.json())
+      .then(
+        (res) => {
+          console.log(res);
+          if (!res.errores) {
+            // console.log(res)
+            setMostrarMensaje({
+              message: "Usuario agregado correctamente",
+              style: "alert alert-success",
+            });
 
-  }
+            setTimeout(() => {
+              setMostrarMensaje(null);
+              history.push("/login");
+            }, 3000);
+          } else {
+            setMostrarMensaje({
+              message: "El usuario ya existe",
+              style: "alert alert-danger",
+            });
 
+            setTimeout(() => {
+              setMostrarMensaje(null);
+            }, 3000);
+          }
+        },
+        (errors) => {
+          console.log(errors);
+        }
+      );
 
-  useEffect(() => {
-    registerSchema.isValid(form).then((esValido) => {
-      console.log(!esValido)
-      setDisableBtn(!esValido);
-    })
-    console.log(form)
-
-  }, [form]);
+    // console.log(options);
+  };
 
   return (
-
     <Container>
       <br></br>
       <br></br>
@@ -97,6 +95,7 @@ const Register = () => {
       <div>
         {/*data-aos="fade-up"*/}
         <form
+          onSubmit={handleSubmit(registrarnuevoUsuario)}
           className="border shadow-lg bg-white rounded"
           style={{
             marginLeft: "25%",
@@ -108,95 +107,70 @@ const Register = () => {
           }}
         >
           <h1 style={{ textAlign: "center" }}>DESEO REGISTRARME</h1>
-          <div className="form-group"  >
-            <label>Apellido y nombre</label>
+          {mostrarMensaje != null ? (
+            <p className={mostrarMensaje.style}>{mostrarMensaje.message}</p>
+          ) : null}
+          <div className="form-floating my-3">
             <input
-              name="nombre_apellido"
-              type="Text"
-              className="form-control"
-              placeholder="Ingrese su apellido y nombre"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>DNI</label>
-            <input
-              name="dni"
-              type="number"
-              className="form-control"
-              placeholder="Ingrese su dni"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group" onChange={handleChange}>
-            <label>Fecha de Nacimiento</label>
-            <input name="fecha_Nac" type="date" className="form-control" />
-          </div>
-          <div className="form-group">
-            <label>Sexo</label>
-            <select className="form-control" onChange={handleChange} name="sexo">
-              <option selected disabled>
-                - Seleccione -
-              </option>
-              <option value="M">Masculino</option>
-              <option value="F">Femenino</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Número de teléfono</label>
-            <input
-              name="telefono"
-              type="number"
-              className="form-control"
-              placeholder="Ingrese su número de teléfono"
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="form-group">
-            <label>Correo electrónico</label>
-            <input
-              name="correo"
               type="email"
-              className="form-control"
-              placeholder="example@gmail.com"
+              id="email"
+              placeholder="name@example.com"
+              {...register("email")}
+              className={`form-control ${errors.email ? "is-invalid" : ""}`}
               onChange={handleChange}
-            ></input>
+            />
+            <label htmlFor="floatingInput">Email</label>
+            <div className="invalid-feedback">{errors.email?.message}</div>
           </div>
-          <div className="form-group">
-            <label>Nombre de usuario</label>
+          <div className="form-floating my-3">
             <input
               name="username"
+              id="username"
               type="text"
-              className="form-control"
-              placeholder="Ingrese su nombre de usuario"
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div class="form-group">
-            <label>Contraseña</label>
-            <input
-              name="password"
-              type="password"
-              className="form-control"
-              placeholder="Ingrese su contraseña"
+              placeholder="Nombre de Usuario"
+              {...register("username")}
+              className={`form-control ${
+                errors.username ? "is-invalid" : ""
+              }`}
               onChange={handleChange}
             />
+            <label htmlFor="floatingInput">Nombre de Usuario</label>
+            <div className="invalid-feedback">
+              {errors.username?.message}
+            </div>
           </div>
-          <div class="form-group">
-            <label>Confirmar contraseña</label>
+          <div className="form-floating my-3">
             <input
-              name="conf_password"
               type="password"
-              className="form-control"
-              placeholder="Confirme su contraseña"
+              id="password"
+              placeholder="Password"
+              {...register("password")}
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
               onChange={handleChange}
             />
+            <label htmlFor="floatingPassword">Contraseña</label>
+            <div className="invalid-feedback">{errors.password?.message}</div>
           </div>
 
-          <br></br>
-          <div>
-            <button type="submit" className="btn btn-success" disabled={disableBtn} onSubmit={handleSubmit} to='/'>
-              REGISTRARME
+          <div className="form-floating my-3">
+            <input
+              type="password"
+              id="passwordConfirm"
+              placeholder="Confirmar Password"
+              {...register("confirmPassword")}
+              className={`form-control ${
+                errors.confirmPassword ? "is-invalid" : ""
+              }`}
+            />
+            <label htmlFor="floatingPassword">Confirmar Contraseña</label>
+            <div className="invalid-feedback">
+              {errors.confirmPassword?.message}
+            </div>
+          </div>
+
+          <div className="d-grid gap-2 d-md-bloc mx-auto">
+            <button className="btn btn-primary btn-sm" type="submit">
+              Registrar
             </button>
           </div>
         </form>

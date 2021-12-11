@@ -10,6 +10,4 @@ export const registerSchema = yup.object().shape( {
     username: yup.string().required(),
     password:yup.string().required(),
     conf_password: yup.string().required()
-
  });
-
