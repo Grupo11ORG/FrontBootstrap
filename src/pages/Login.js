@@ -88,7 +88,7 @@ const Login = () => {
       <div data-aos="fade-up">
         <form
           className="container border shadow-lg bg-white rounded"
-          style={{ marginBottom: "250px" }}
+          style={{ marginBottom: "250px", width:"50%" }}
           onSubmit={handleSubmit}
         >
           <h1 style={{ textAlign: "center" }}>Iniciar Sesion</h1>
@@ -125,9 +125,12 @@ const Login = () => {
               Recuerdame
             </label>
           </div>
+          <br/>
           <button type="submit" class="btn btn-primary" onClick={handleSubmit}>
             Submit
           </button>
+          <br/>
+          <br/>
           {/* <br/>
             <br/>
             <br/>

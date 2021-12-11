@@ -14,9 +14,15 @@ const Navbar = () => {
     <nav
       class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-shrink"
       id="mainNav"
+      style={{
+        width: "100%",
+        height: "60px"
+
+      }}
     >
+    
       <div class="container px-4 px-lg-5">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/" style={{fontSize: "25px"   }}>
           <i class="glyphicon glyphicon-phone"></i>TechSearch
         </Link>
         <button
@@ -35,28 +41,28 @@ const Navbar = () => {
             {session === null ? (
               <>
                 {/* <li class="nav-item"><Link class="nav-link" href="#about">About</Link></li> */}
-                <li class="nav-item">
-                  <Link class="nav-link" to="/login">
+                <li class="nav-item" >
+                  <Link class="nav-link" to="/login" style={{fontSize: "15px"}}><i class="glyphicon glyphicon-log-in"></i>
                     Login
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/registrar">
+                  <Link className="nav-link" to="/registrar" style={{fontSize: "15px"}}><i class="glyphicon glyphicon-new-window"></i>
                     Register
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/home">
+                  <Link className="nav-link" to="/home" style={{fontSize: "15px"}}><i class="glyphicon glyphicon-home"></i>
                     Home
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/perfil">
+                  <Link className="nav-link" to="/perfil" style={{fontSize: "15px"}}><i class="glyphicon glyphicon-user"></i> 
                     PerfilTec
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/admin">
+                  <Link className="nav-link" to="/admin" style={{fontSize: "15px"}}><i class="glyphicon glyphicon-floppy-disk"></i>
                     Admin
                   </Link>
                 </li>
@@ -64,32 +70,32 @@ const Navbar = () => {
             ) : (
               <>
                 <li class="nav-item">
-                  <a class="nav-link" href="#about">
+                  <a class="nav-link" href="#about" style={{fontSize: "15px"}}>
                     About
                   </a>
                 </li>
                 <li class="nav-item">
-                  <Link class="nav-link" to="/login">
+                  <Link class="nav-link" to="/login" style={{fontSize: "15px"}}>
                     Login
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/registrar">
+                  <Link className="nav-link" to="/registrar" style={{fontSize: "15px"}}>
                     Register
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/home">
+                  <Link className="nav-link" to="/home" style={{fontSize: "15px"}}>
                     Home
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/perfil">
+                  <Link className="nav-link" to="/perfil" style={{fontSize: "15px"}}>
                     PerfilTec
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link className="nav-link" to="/admin">
+                  <Link className="nav-link" to="/admin" style={{fontSize: "15px"}}>
                     Admin
                   </Link>
                 </li>
@@ -102,6 +108,7 @@ const Navbar = () => {
                       localStorage.removeItem("rstoken");
                       history.push("/login");
                     }}
+                    style={{fontSize: "15px"}}
                   >
                     Cerrar sesión
                   </Link>
