@@ -1,14 +1,7 @@
 import Container from "../layout/Container";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { registerSchema } from "../validations/vRegister";
 import { useState, useEffect } from "react";
-
-
-
-
-
-
-
 
 const initialForm = {
   nombre_apellido: "",
@@ -20,99 +13,82 @@ const initialForm = {
   username: "",
   password: "",
   conf_password: "",
-
 };
 
-
-
-
-
-
-
 const Register = () => {
-
-  const [form, setForm] = useState(initialForm)
+  const [form, setForm] = useState(initialForm);
   const [disableBtn, setDisableBtn] = useState(true);
   const history = useHistory();
- 
-  const [mostrarMensaje, setMostrarMensaje] = useState(null)
-  const History = useHistory()
 
-
+  const [mostrarMensaje, setMostrarMensaje] = useState(null);
+  const History = useHistory();
 
   const registrarnuevoUsuario = async () => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: myHeaders,
       body: JSON.stringify(form),
-      redirect: 'follow'
-    }
+      redirect: "follow",
+    };
 
-    fetch('https://https://tecnosearch.herokuapp.com/register', options)
-      .then(res => res.json())
+    fetch("https://tecnosearch.herokuapp.com/register", options)
+      .then((res) => res.json())
       .then(
         (res) => {
-          console.log(res)
+          console.log(res);
           if (!res.errores) {
-            // console.log(res) 
-            setMostrarMensaje({ message: 'Usuario agregado correctamente', style: 'alert alert-success' });
+            // console.log(res)
+            setMostrarMensaje({
+              message: "Usuario agregado correctamente",
+              style: "alert alert-success",
+            });
 
             setTimeout(() => {
-              setMostrarMensaje(null)
-              history.push('/login')
-            }, 3000)
-
+              setMostrarMensaje(null);
+              history.push("/login");
+            }, 3000);
           } else {
-            setMostrarMensaje({ message: 'El usuario ya existe', style: 'alert alert-danger' });
+            setMostrarMensaje({
+              message: "El usuario ya existe",
+              style: "alert alert-danger",
+            });
 
             setTimeout(() => {
-              setMostrarMensaje(null)
-
-            }, 3000)
+              setMostrarMensaje(null);
+            }, 3000);
           }
-
-
-
-
         },
-        (errors) => { console.log(errors) })
-
+        (errors) => {
+          console.log(errors);
+        }
+      );
 
     // console.log(options);
-
-  }
-
+  };
 
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
-    }
-
-    )
-
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
-    registrarnuevoUsuario()
-
-  }
-
+    e.preventDefault();
+    registrarnuevoUsuario();
+  };
 
   useEffect(() => {
     registerSchema.isValid(form).then((esValido) => {
-      console.log(!esValido)
+      console.log(!esValido);
       setDisableBtn(!esValido);
-    })
-    console.log(form)
-
+    });
+    console.log(form);
   }, [form]);
 
   return (
-
     <Container>
       <br></br>
       <br></br>
@@ -131,7 +107,7 @@ const Register = () => {
           }}
         >
           <h1 style={{ textAlign: "center" }}>DESEO REGISTRARME</h1>
-          <div className="form-group"  >
+          <div className="form-group">
             <label>Apellido y nombre</label>
             <input
               name="nombre_apellido"
@@ -157,7 +133,11 @@ const Register = () => {
           </div>
           <div className="form-group">
             <label>Sexo</label>
-            <select className="form-control" onChange={handleChange} name="sexo">
+            <select
+              className="form-control"
+              onChange={handleChange}
+              name="sexo"
+            >
               <option selected disabled>
                 - Seleccione -
               </option>
@@ -218,7 +198,13 @@ const Register = () => {
 
           <br></br>
           <div>
-            <button type="submit" className="btn btn-success" disabled={disableBtn} onSubmit={handleSubmit} to='/'>
+            <button
+              type="submit"
+              className="btn btn-success"
+              disabled={disableBtn}
+              onSubmit={handleSubmit}
+              to="/"
+            >
               REGISTRARME
             </button>
           </div>
