@@ -14,8 +14,11 @@ const initialForm = {
 
 const Register = () => {
   const validationRegister = Yup.object().shape({
-    nombre_usuario: Yup.string()
-      .required("El Username es requerido"),
+    username: Yup.string()
+    .required("El Username es requerido")
+    .min(6, "El Username debe contener mas de 6 caracteres")
+    .max(15, "El Username no debe exceder los 15 caracteres")
+    .matches(/^[aA-zZ\s]+$/, "Solo se admiten caracteres"),
     email: Yup.string()
       .required("El Email es requerido")
       .email("El formato del Email es invalido"),
@@ -43,22 +46,23 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(validationRegister) });
 
-  
   const registrarnuevoUsuario = async () => {
-    const dataJson = JSON.stringify(form)
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
     const options = {
       method: "POST",
-      headers: {'Content-Type': 'application/json'},
-      body: dataJson,
+      headers: myHeaders,
+      body: JSON.stringify(form),
+      redirect: "follow",
     };
 
     fetch("https://tecnosearch.herokuapp.com/api/register", options)
       .then((res) => res.json())
       .then(
         (res) => {
-          console.log(res);
           if (!res.errores) {
-            // console.log(res)
+            console.log(res);
             setMostrarMensaje({
               message: "Usuario agregado correctamente",
               style: "alert alert-success",
@@ -93,7 +97,6 @@ const Register = () => {
       <br></br>
       <br></br>
       <div>
-        {/*data-aos="fade-up"*/}
         <form
           onSubmit={handleSubmit(registrarnuevoUsuario)}
           className="border shadow-lg bg-white rounded"
@@ -104,6 +107,7 @@ const Register = () => {
             paddingRight: "60px",
             paddingTop: "20px",
             paddingBottom: "20px",
+            height:"70%",
           }}
         >
           <h1 style={{ textAlign: "center" }}>DESEO REGISTRARME</h1>
@@ -112,6 +116,7 @@ const Register = () => {
           ) : null}
           <div className="form-floating my-3">
             <input
+              name="email"
               type="email"
               id="email"
               placeholder="name@example.com"
@@ -129,15 +134,11 @@ const Register = () => {
               type="text"
               placeholder="Nombre de Usuario"
               {...register("username")}
-              className={`form-control ${
-                errors.username ? "is-invalid" : ""
-              }`}
+              className={`form-control ${errors.username ? "is-invalid" : ""}`}
               onChange={handleChange}
             />
             <label htmlFor="floatingInput">Nombre de Usuario</label>
-            <div className="invalid-feedback">
-              {errors.username?.message}
-            </div>
+            <div className="invalid-feedback">{errors.username?.message}</div>
           </div>
           <div className="form-floating my-3">
             <input
@@ -169,7 +170,7 @@ const Register = () => {
           </div>
 
           <div className="d-grid gap-2 d-md-bloc mx-auto">
-            <button className="btn btn-primary btn-sm" type="submit">
+            <button onClick={handleSubmit(registrarnuevoUsuario)} className="btn btn-primary btn-sm" type="submit">
               Registrar
             </button>
           </div>

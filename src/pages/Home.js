@@ -4,10 +4,14 @@ import Container from "../layout/Container";
 
 const Home = () => {
   return (
+    <>
+    <br/>
+    <br/>
     <Container>
       <Card />
       
     </Container>
+    </>
   );
 };
 

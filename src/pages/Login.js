@@ -1,9 +1,8 @@
 import Container from "../layout/Container";
-import { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useState, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Session } from "../context/Session";
 import swal from "sweetalert";
-
 
 const initialForm = {
   email: "",
@@ -11,41 +10,37 @@ const initialForm = {
 }
 
 const Login = () => {
-
   const history = useHistory();
 
   const InicioSesionExitosa = (token) => {
     swal({
-      title: 'Inicio de Sesión Exitosa',
-      text: 'Bienvenido',
-      icon: 'success',
-      timer: '1000',
+      title: "Inicio de Sesión Exitosa",
+      text: "Bienvenido",
+      icon: "success",
+      timer: "1000",
       showCancelButton: false,
-      showConfirmButton: false
+      showConfirmButton: false,
     }).then(() => {
       //Almacenamiento del token y redirección después de 3 segundos
-      setSession({ token })
-      history.push('./students');
-    }
-    );
-  }
+      setSession({ token });
+      history.push("./students");
+    });
+  };
   const InicioSesionError = () => {
     swal({
-      title: 'Inicio de Sesión Fallida',
-      text: 'Intente Nuevamente',
-      icon: 'error',
-      timer: '2000'
+      title: "Inicio de Sesión Fallida",
+      text: "Intente Nuevamente",
+      icon: "error",
+      timer: "2000",
     });
-  }
-  const [form, setForm] = useState(initialForm)
+  };
+  const [form, setForm] = useState(initialForm);
   const handleChange = (e) => {
-    setForm(
-      {
-        ...form,
-        [e.target.name]: e.target.value
-      }
-    )
-  }
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -64,29 +59,25 @@ const Login = () => {
     });
     const response = await res.json();
 
-    //Si la consulta es devuelve el token lo guardamos en el contexto de la sesión 
+    //Si la consulta es devuelve el token lo guardamos en el contexto de la sesión
     if (response.token) {
-      localStorage.setItem('rstoken', response.token)
-      console.log(response.token)
+      localStorage.setItem("rstoken", response.token);
+      console.log(response.token);
 
       //Agregar un mensaje para avisarle al usuario que ya inició sesión
 
       InicioSesionExitosa(response.token);
-
     } else {
       InicioSesionError();
     }
     //Agregar en un else algún mensaje para avisarle al usuario que la cuenta no existe.
-  }
+  };
 
   //Getter y Setter de la sesión
   const [session, setSession] = useContext(Session);
 
-
-
   return (
     <Container>
-
       <br />
       <br />
       <br />
@@ -94,7 +85,7 @@ const Login = () => {
       <div data-aos="fade-up">
         <form
           className="container border shadow-lg bg-white rounded"
-          style={{ marginBottom: "250px" }}
+          style={{ marginBottom: "250px", width:"50%" }}
           onSubmit={handleSubmit}
         >
           <h1 style={{ textAlign: "center" }}>Iniciar Sesion</h1>
@@ -128,12 +119,15 @@ const Login = () => {
               id="exampleCheck1"
             />
             <label class="form-check-label" for="exampleCheck1">
-           Recuerdame
+              Recuerdame
             </label>
           </div>
+          <br/>
           <button type="submit" class="btn btn-primary" onClick={handleSubmit}>
             Submit
           </button>
+          <br/>
+          <br/>
           {/* <br/>
             <br/>
             <br/>
