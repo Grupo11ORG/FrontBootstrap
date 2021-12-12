@@ -59,6 +59,31 @@ const Navbar = () => {
                     Register
                   </Link>
                 </li>
+
+
+                {/* <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    to="/admin"
+                    style={{ fontSize: "15px" }}
+                  >
+                    <i className="glyphicon glyphicon-floppy-disk"></i>
+                    Admin
+                  </Link>
+                </li> */}
+              </>
+            ) : (
+              <>
+                {/* <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    href="#about"
+                    style={{ fontSize: "15px" }}
+                  >
+                    About
+                  </a>
+                </li> */}
+
                 <li className="nav-item">
                   <Link
                     className="nav-link"
@@ -71,73 +96,15 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link"
+                    className="nav-link outlined-primary"
                     to="/perfil"
                     style={{ fontSize: "15px" }}
                   >
                     <i className="glyphicon glyphicon-user"></i>
-                    PerfilTec
+                    Soy especialista!
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/admin"
-                    style={{ fontSize: "15px" }}
-                  >
-                    <i className="glyphicon glyphicon-floppy-disk"></i>
-                    Admin
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    href="#about"
-                    style={{ fontSize: "15px" }}
-                  >
-                    About
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/login"
-                    style={{ fontSize: "15px" }}
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/registrar"
-                    style={{ fontSize: "15px" }}
-                  >
-                    Register
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/home"
-                    style={{ fontSize: "15px" }}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to="/perfil"
-                    style={{ fontSize: "15px" }}
-                  >
-                    PerfilTec
-                  </Link>
-                </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link
                     className="nav-link"
                     to="/admin"
@@ -145,7 +112,7 @@ const Navbar = () => {
                   >
                     Admin
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link
                     to="#"

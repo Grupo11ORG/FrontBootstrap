@@ -23,7 +23,7 @@ const Login = () => {
     }).then(() => {
       //Almacenamiento del token y redirección después de 3 segundos
       setSession({ token });
-      history.push("./students");
+      history.push("./home");
     });
   };
   const InicioSesionError = () => {
@@ -65,10 +65,11 @@ const Login = () => {
       console.log(response.token);
 
       //Agregar un mensaje para avisarle al usuario que ya inició sesión
-
-      InicioSesionExitosa(response.token);
-    } else {
       InicioSesionError();
+
+     
+    } else {
+      InicioSesionExitosa(response.token);
     }
     //Agregar en un else algún mensaje para avisarle al usuario que la cuenta no existe.
   };
@@ -85,49 +86,51 @@ const Login = () => {
       <div data-aos="fade-up">
         <form
           className="container border shadow-lg bg-white rounded"
-          style={{ marginBottom: "250px", width:"50%" }}
+          style={{ marginBottom: "250px", width: "50%" }}
           onSubmit={handleSubmit}
         >
           <h1 style={{ textAlign: "center" }}>Iniciar Sesion</h1>
 
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input
+              name="email"
               type="email"
-              class="form-control"
+              className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
             />
-            <small id="emailHelp" class="form-text text-muted">
+            <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
             </small>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input
+              name="password"
               type="password"
-              class="form-control"
+              className="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
             />
           </div>
-          <div class="form-check">
+          <div className="form-check">
             <input
               type="checkbox"
-              class="form-check-input"
+              className="form-check-input"
               id="exampleCheck1"
             />
-            <label class="form-check-label" for="exampleCheck1">
+            <label className="form-check-label" for="exampleCheck1">
               Recuerdame
             </label>
           </div>
-          <br/>
-          <button type="submit" class="btn btn-primary" onClick={handleSubmit}>
+          <br />
+          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
             Submit
           </button>
-          <br/>
-          <br/>
+          <br />
+          <br />
           {/* <br/>
             <br/>
             <br/>
