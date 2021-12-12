@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../layout/Container";
 
 const PerfilTec = () => {
+  
   return (
     <Container>
       <form className="container rounded bg-orange mt-5 mb-5" />

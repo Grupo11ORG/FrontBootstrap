@@ -105,7 +105,7 @@ const Navbar = () => {
                     className="nav-link"
                     onClick={() => {
                       setSession(null);
-                      localStorage.removeItem("rstoken");
+                      localStorage.removeItem("token");
                       history.push("/login");
                     }}
                     style={{fontSize: "15px"}}
