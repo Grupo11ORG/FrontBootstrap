@@ -16,7 +16,7 @@ const Register = () => {
   const validationRegister = Yup.object().shape({
     username: Yup.string()
     .required("El Username es requerido")
-    .min(6, "El Username debe contener mas de 6 caracteres")
+    .min(8, "El Username debe contener mas de 8 caracteres")
     .max(15, "El Username no debe exceder los 15 caracteres")
     .matches(/^[aA-zZ\s]+$/, "Solo se admiten caracteres"),
     email: Yup.string()
@@ -24,7 +24,8 @@ const Register = () => {
       .email("El formato del Email es invalido"),
     password: Yup.string()
       .required("El Password es requerido")
-      .max(15, "El Password no debe exceder los 15 caracteres"),
+      .max(15, "El Password no debe exceder los 15 caracteres")
+      .min(8, "La contraseña debe tener mas de 8 caracteres"),
     confirmPassword: Yup.string()
       .required("La Confirmación de la Contraseña es requerida")
       .oneOf([Yup.ref("password"), null], "Las Contraseñas deben ser iguales"),
