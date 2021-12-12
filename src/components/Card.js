@@ -1,10 +1,12 @@
-import React from "react"
-import Modal from "./Modal"
+import React from "react";
+//import Modal from "./Modal";
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 
 const Card = () => {
   const [datos, setDatos] = useState([]);
+
+  let id = null;
 
   const obtenerDatos = async () => {
     try {
@@ -44,8 +46,10 @@ const Card = () => {
               marginLeft: "20%",
               marginRight: "20%",
             }}
+            key={item._id}
           >
-            <div className="card text-center">
+            {(id = item._id)}
+            <div className="card text-center" key={item._id}>
               <div className="card-header">
                 <h3>{item.datos_personales.nombre_completo}</h3>
               </div>
@@ -56,12 +60,14 @@ const Card = () => {
                 <p className="card-text">{item.info_profesional.rubros}</p>
               </div>
               <div className="card-footer text-muted">
-                <button
-                  className="btn btn-primary btn-xs"
-                  style={{ marginLeft: "60%" }}
-                >
-                  <i className="glyphicon glyphicon-plus"></i> ver más!{" "}
-                </button>
+                <Link to={"/ficha/" + id}>
+                  <button
+                    className="btn btn-primary btn-xs"
+                    style={{ marginLeft: "60%" }}
+                  >
+                    <i className="glyphicon glyphicon-plus"></i> ver más!{" "}
+                  </button>
+                </Link>
                 <button
                   class="btn btn-info btn-xs"
                   style={{ marginLeft: "10px" }}
