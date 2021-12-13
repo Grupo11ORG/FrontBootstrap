@@ -12,7 +12,7 @@ import {
 import Home from "./pages/Home";
 import PerfilTec from "./pages/PerfilTec";
 import Register from "./pages/Register";
-import Admin from "./pages/Admin";
+//import Admin from "./pages/Admin";
 import Ficha from "./pages/Ficha";
 import { Session } from "./context/Session";
 import Error404 from "./pages/Error404";
@@ -33,7 +33,7 @@ function App() {
           <Route exact path="/" component={Principal} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/perfil" component={PerfilTec} />
-          <Route exact path="/ficha/" component={Ficha} />
+          <Route exact path="/ficha/:id" component={Ficha} />
           <Route path="*" component={Error404} />
           {/* <Route exact path="/admin" component={Admin} /> */}
         </Switch>
