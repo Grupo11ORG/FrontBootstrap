@@ -10,8 +10,8 @@ const TagInput = ({ required = false, min = 0, max = 99999, tags, handle, sugges
   const [suggestedList, setSuggestedList] = useState([])
 
   //
-  const delimiter = ['Enter', 'Space', 'Tab', 'Period', 'Comma']
-  const disabled = ['', '.', ',', ' ']
+  const delimiter = ['Enter', 'Tab', 'Period', 'Comma']
+  const disabled = ['', '.', ',']
 
   // Escribe mientras no ingrese un valor que esté dentro de los delimitadores
   const handleChangeInputValue = (e) => {
