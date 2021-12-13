@@ -68,12 +68,7 @@ const Card = () => {
                     <i className="glyphicon glyphicon-plus"></i> ver más!{" "}
                   </button>
                 </Link>
-                <button
-                  class="btn btn-info btn-xs"
-                  style={{ marginLeft: "10px" }}
-                >
-                  <i className="glyphicon glyphicon-phone"></i> Tec
-                </button>
+             
               </div>
             </div>
           </div>
