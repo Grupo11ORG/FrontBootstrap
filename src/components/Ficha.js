@@ -126,7 +126,7 @@ const Ficha = () => {
                   class="btn btn-info btn-xs"
                   style={{ marginLeft: "10px" }}
                 >
-                  <i className="glyphicon glyphicon-phone"></i> Tec
+                 <i className="fa-regular fa-thumbs-up"></i> Tec
                 </button>
             </div>
           </div>

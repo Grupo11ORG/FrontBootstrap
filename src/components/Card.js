@@ -2,8 +2,12 @@ import React from "react";
 //import Modal from "./Modal";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import TagInput from "./TagInput/TagInput";
+
 
 const Card = () => {
+  const [like, setLike] = useState(false)
+  const [tags, setTags] = useState([]);
   const [datos, setDatos] = useState([]);
 
   let id = null;
@@ -57,6 +61,7 @@ const Card = () => {
                 <h5 className="card-title">
                   {item.info_profesional.certificaciones}
                 </h5>
+                {/* <TagInput tags={tags} handle={setTags}/> */}
                 <p className="card-text">{item.info_profesional.rubros}</p>
               </div>
               <div className="card-footer text-muted">
@@ -68,7 +73,15 @@ const Card = () => {
                     <i className="glyphicon glyphicon-plus"></i> ver más!{" "}
                   </button>
                 </Link>
-             
+                <button
+                  onClick={() => setLike(!like)}
+                  class="btn btn-info btn-xs"
+                  style={{ marginLeft: "10px" }}
+                >
+                  <i class={ `${like ? 'fas' : 'far'} fa-thumbs-up `}></i>
+
+                </button>
+
               </div>
             </div>
           </div>

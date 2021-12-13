@@ -1,7 +1,10 @@
 import React from "react";
 import Container from "../layout/Container";
+import TagInput from "../components/TagInput/TagInput";
+import { useState } from "react";
 
 const PerfilTec = () => {
+  const [tags, setTags] = useState([]);
   return (
     <Container>
       <form className="container rounded bg-orange mt-5 mb-5">
@@ -100,19 +103,9 @@ const PerfilTec = () => {
                 </div>
                 <div className="col-md-12">
                   <label className="labels">Rubro</label>
-                  <select
-                    id="rubro"
-                    name="rubro"
-                    type="text"
-                    className="form-control"
-                  >
-                    <option selected disabled>
-                      Seleccione una opcion
-                    </option>
-                    <option>Programacion</option>
-                    <option>Informatica</option>
-                    <option>Reparaciones</option>
-                  </select>
+
+                  <TagInput tags={tags} handle={setTags}/>
+                  
                 </div>
               </div>
               <div className="mt-5 text-center">
