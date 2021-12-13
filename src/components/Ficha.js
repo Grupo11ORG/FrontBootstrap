@@ -122,7 +122,12 @@ const Ficha = () => {
             </div>
             <div className="form-group">
               <label>{item.info_profesional.likes}</label>
-              <button className="btn btn-primary">Like</button>
+              <button
+                  class="btn btn-info btn-xs"
+                  style={{ marginLeft: "10px" }}
+                >
+                  <i className="glyphicon glyphicon-phone"></i> Tec
+                </button>
             </div>
           </div>
         </div>
