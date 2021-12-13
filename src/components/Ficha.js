@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Ficha = () => {
-  const [like, setLike] = useState(false)
+  const [like, setLike] = useState(false);
   const params = useParams();
   const [datos, setDatos] = useState([]);
 
@@ -33,79 +33,92 @@ const Ficha = () => {
   }, []);
   return (
     <>
-    <div className="border border-primary" style={{marginTop:"5%"}}>
-      <br></br>
-      {Object.keys(datos).length > 0 && (
-        <div key={datos._id}>
-          <div className="form-group" key={datos._id}>
-            <h1>Datos del técnico</h1>
-            <div className="form-group">
-              <h4>Nombre: {datos.datos_personales.nombre_completo}</h4>
+      <div
+        className="border border-primary"
+        style={{ marginTop: "5%", marginLeft: "10%", marginRight: "10%" }}
+      >
+        <br></br>
+        {Object.keys(datos).length > 0 && (
+          <div key={datos._id}>
+            <div className="form-group" key={datos._id}>
+              <h1>Datos del técnico</h1>
+              <div className="form-group">
+                <h4>Nombre: {datos.datos_personales.nombre_completo}</h4>
+              </div>
+
+              <div className="form-group" key={datos._id}>
+                {
+                  (datos.datos_personales.sexo = "M" ? (
+                    <h4>Sexo: Masculino</h4>
+                  ) : (
+                    <h4>Sexo: Femenino</h4>
+                  ))
+                }
+              </div>
+
+              <div className="form-group" key={datos._id}>
+                <h4>Telefono: {datos.datos_personales.telefono}</h4>
+              </div>
+
+              <div className="form-group" key={datos._id}>
+                <h4>Correo electrónico: {datos.datos_personales.email}</h4>
+              </div>
             </div>
 
             <div className="form-group" key={datos._id}>
-              <h4>Sexo: {datos.datos_personales.sexo}</h4>
+              <h1>Información profesional</h1>
+              <div className="form-group">
+                {datos.info_profesional.certificaciones.map((certif) => (
+                  <div>
+                    <h4>Certificaciones: {certif.certificaciones}</h4>
+                  </div>
+                ))}
+              </div>
+
+              <div className="form-group" key={datos._id}>
+                {datos.info_profesional.rubros.map((rub) => (
+                  <div>
+                    <h4>Rubro: {rub.rubros}</h4>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="form-group" key={datos._id}>
-              <h4>Telefono: {datos.datos_personales.telefono}</h4>
-            </div>
+              <div className="form-group">
+                <h4>
+                  Dias de atención: {datos.info_lugar_trabajo.dias_atencion}
+                </h4>
+              </div>
 
-            <div className="form-group" key={datos._id}>
-              <h4>Correo electrónico: {datos.datos_personales.email}</h4>
-            </div>
-          </div>
+              <div className="form-group" key={datos._id}>
+                <h4>
+                  Horario de atención:{" "}
+                  {datos.info_lugar_trabajo.horario_atencion}
+                </h4>
+              </div>
 
-          <div className="form-group" key={datos._id}>
-            <h1>Información profesional</h1>
-            <div className="form-group">
-              {datos.info_profesional.certificaciones.map((certif) => (
-                <div>
-                  <h4>Certificaciones: {certif.certificaciones}</h4>
-                </div>
-              ))}
-            </div>
+              <div className="form-group" key={datos._id}>
+                <h4>Dirección: {datos.info_lugar_trabajo.direccion}</h4>
+              </div>
 
-            <div className="form-group" key={datos._id}>
-              {datos.info_profesional.rubros.map((rub) => (
-                <div>
-                  <h4>Rubro: {rub.rubros}</h4>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="form-group" key={datos._id}>
-            <div className="form-group">
-              <h4>
-                Dias de atención: {datos.info_lugar_trabajo.dias_atencion}
-              </h4>
-            </div>
-
-            <div className="form-group" key={datos._id}>
-              <h4>
-                Horario de atención: {datos.info_lugar_trabajo.horario_atencion}
-              </h4>
-            </div>
-
-            <div className="form-group" key={datos._id}>
-              <h4>Dirección: {datos.info_lugar_trabajo.direccion}</h4>
-            </div>
-
-            <div className="form-group">
-              <h4>Número de Likes: {datos.info_profesional.likes}</h4>
-              <button
+              <div className="form-group">
+                {datos.info_profesional.like > 0 ? (
+                  <h4>Likes: {datos.info_profesional.likes}</h4>
+                ) : (
+                  <h4>Likes: 0</h4>
+                )}
+                <button
                   onClick={() => setLike(!like)}
                   class="btn btn-info btn-s"
                   style={{ marginLeft: "300px" }}
                 >
-                  <i class={ `${like ? 'fas' : 'far'} fa-thumbs-up `}></i>
-
+                  <i class={`${like ? "fas" : "far"} fa-thumbs-up `}></i>
                 </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
     </>
   );
