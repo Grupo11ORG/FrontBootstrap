@@ -1,6 +1,6 @@
 import Container from "../layout/Container";
 import { useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { Session } from "../context/Session";
 import swal from "sweetalert";
 
