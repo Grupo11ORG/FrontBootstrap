@@ -106,6 +106,16 @@ const Navbar = () => {
                 </li>
                 {/* <li className="nav-item">
                   <Link
+                    className="nav-link outlined-primary"
+                    to="/"
+                    style={{ fontSize: "15px" }}
+                  >
+                    <a>{session.datos_personales.email}
+                    </a>
+                  </Link>
+                </li> */}
+                {/* <li className="nav-item">
+                  <Link
                     className="nav-link"
                     to="/admin"
                     style={{ fontSize: "15px" }}
