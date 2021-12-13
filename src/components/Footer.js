@@ -8,7 +8,7 @@ const Footer = () => {
     >
       <div className="container px-4 px-lg-5">
         <div className="small text-center text-muted">
-          Copyright &copy; 2021 - Company Name
+          Copyright &copy; 2021 - Tech Search
         </div>
       </div>
     </footer>
