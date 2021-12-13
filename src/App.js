@@ -43,7 +43,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/registrar" component={Register} />
         <Route exact path="/admin" component={Admin} />
-        <Route exact path="/ficha/" component={Ficha} />
+        <Route exact path="/ficha" component={Ficha} />
       </Switch>
     );
   };
