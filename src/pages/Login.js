@@ -48,9 +48,9 @@ const Login = () => {
 
     const res = await fetch("https://tecnosearch.herokuapp.com/api/login", {
       method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
+      // mode: "cors",
+      // cache: "no-cache",
+      // credentials: "sSame-origin",
       headers: {
         "Content-Type": "application/json",
       },

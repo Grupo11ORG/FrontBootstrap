@@ -13,7 +13,7 @@ const PerfilTec = () => {
                 width="150px"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
               />
-              <span class="font-weight-bold">UwU</span>
+              <span class="font-weight-bold">Usuario</span>
               <span class="text-black-50">Informacion</span>
             </div>
           </div>
@@ -22,106 +22,97 @@ const PerfilTec = () => {
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h4 className="text-right">Profile Settings</h4>
               </div>
-              <div className="row mt-2">
-                <div className="col-md-6">
-                  <label className="labels">Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="first name"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="labels">Surname</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="surname"
-                  />
-                </div>
-              </div>
               <div className="row mt-3">
                 <div className="col-md-12">
-                  <label className="labels">Mobile Number</label>
+                  <label className="labels">Nombre completo</label>
                   <input
+                    id="nameCom"
+                    name="nameCom"
                     type="text"
                     className="form-control"
-                    placeholder="enter phone number"
+                    placeholder="Nombre Completo"
                   />
                 </div>
                 <div className="col-md-12">
-                  <label className="labels">Address Line 1</label>
+                  <label className="labels">Fecha de nacimiento</label>
                   <input
-                    type="text"
+                    id="fechaNac"
+                    name="fechaNac"
+                    type="date"
                     className="form-control"
-                    placeholder="enter address line 1"
+                    placeholder="EstoIgualNoSeVe Nose ParaQueLoMuestro"
                   />
                 </div>
                 <div className="col-md-12">
-                  <label className="labels">Address Line 2</label>
+                  <label className="labels">DNI</label>
                   <input
+                    id="denei"
+                    name="denei"
                     type="text"
                     className="form-control"
-                    placeholder="enter address line 2"
+                    placeholder="Numero documento"
                   />
                 </div>
                 <div className="col-md-12">
-                  <label className="labels">Postcode</label>
-                  <input
+                  <label className="labels">Sexo</label>
+                  <select
+                    id="nameCom"
+                    name="nameCom"
                     type="text"
                     className="form-control"
-                    placeholder="enter address line 2"
-                  />
+                  >
+                    <option selected disabled>
+                      Seleccione una opcion
+                    </option>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                  </select>
                 </div>
                 <div className="col-md-12">
-                  <label className="labels">State</label>
+                  <label className="labels">Telefono</label>
                   <input
+                    id="telef"
+                    name="telef"
                     type="text"
                     className="form-control"
-                    placeholder="enter address line 2"
+                    placeholder="Numero de telefono"
                   />
+                </div>
+                <div className="row">
+                  <div className="col-md-6">
+                    <label className="labels">Certificaciones</label>
+                    <input
+                      id="certif"
+                      name="certif"
+                      type="text"
+                      className="form-control"
+                      placeholder="Describa sus certificaciones"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="labels"></label>
+                    <input
+                      className="form-control"
+                      name="certifImg"
+                      type="file"
+                    />
+                  </div>
                 </div>
                 <div className="col-md-12">
-                  <label className="labels">Area</label>
-                  <input
+                  <label className="labels">Rubro</label>
+                  <select
+                    id="rubro"
+                    name="rubro"
                     type="text"
                     className="form-control"
-                    placeholder="enter address line 2"
-                  />
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Email ID</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="enter email id"
-                  />
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Education</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="education"
-                  />
-                </div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-md-6">
-                  <label className="labels">Country</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="country"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="labels">State/Region</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="state"
-                  />
+                  >
+                    <option selected disabled>
+                      Seleccione una opcion
+                    </option>
+                    <option>Programacion</option>
+                    <option>Informatica</option>
+                    <option>Reparaciones</option>
+                  </select>
                 </div>
               </div>
               <div className="mt-5 text-center">
