@@ -70,13 +70,14 @@ const Card = () => {
                     <i className="glyphicon glyphicon-plus"></i> ver más!{" "}
                   </button>
                 </Link>
-                <button
+                {/* <button
                   onClick={() => setLike(!like)}
                   class="btn btn-info btn-xs"
                   style={{ marginLeft: "10px" }}
                 >
-                  <i class={`${like ? "fas" : "far"} fa-thumbs-up `}></i>
-                </button>
+                  <i class={ `${like ? 'fas' : 'far'} fa-thumbs-up `}></i>
+
+                </button> */}
               </div>
             </div>
           </div>

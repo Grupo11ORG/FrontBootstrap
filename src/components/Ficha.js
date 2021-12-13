@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Ficha = () => {
+  const [like, setLike] = useState(false)
   const params = useParams();
   const [datos, setDatos] = useState([]);
 
@@ -32,6 +33,7 @@ const Ficha = () => {
   }, []);
   return (
     <>
+    <div className="border border-primary" style={{marginTop:"5%"}}>
       <br></br>
       {Object.keys(datos).length > 0 && (
         <div key={datos._id}>
@@ -93,15 +95,18 @@ const Ficha = () => {
             <div className="form-group">
               <h4>Número de Likes: {datos.info_profesional.likes}</h4>
               <button
-                className="btn btn-info btn-xs"
-                style={{ marginLeft: "10px" }}
-              >
-                <i className="glyphicon glyphicon-phone"></i> Tec
-              </button>
+                  onClick={() => setLike(!like)}
+                  class="btn btn-info btn-s"
+                  style={{ marginLeft: "300px" }}
+                >
+                  <i class={ `${like ? 'fas' : 'far'} fa-thumbs-up `}></i>
+
+                </button>
             </div>
           </div>
         </div>
       )}
+      </div>
     </>
   );
 };
