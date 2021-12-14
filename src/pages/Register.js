@@ -173,7 +173,7 @@ const Register = () => {
           <div className="d-grid gap-2 d-md-bloc mx-auto">
             <button onClick={handleSubmit(registrarnuevoUsuario)} className="btn btn-primary btn-sm" type="submit">
               Registrar
-            </button>
+            </button>nu
           </div>
         </form>
       </div>
