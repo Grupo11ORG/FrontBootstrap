@@ -3,12 +3,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Principal from "./pages/Principal";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import PerfilTec from "./pages/PerfilTec";
 import Register from "./pages/Register";

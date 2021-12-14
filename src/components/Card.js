@@ -9,8 +9,6 @@ const Card = () => {
   const [tags, setTags] = useState([]);
   const [datos, setDatos] = useState([]);
 
-  let id = null;
-
   const obtenerDatos = async () => {
     try {
       const data = await fetch(
@@ -60,6 +58,9 @@ const Card = () => {
                 </h5>
                 {/* <TagInput tags={tags} handle={setTags}/> */}
                 <p className="card-text">{item.info_profesional.rubros}</p>
+                <p className="far fa-thumbs-up">
+                  {item.info_profesional.likes}
+                </p>
               </div>
               <div className="card-footer text-muted">
                 <Link to={"/ficha/" + item._id}>
@@ -70,14 +71,6 @@ const Card = () => {
                     <i className="glyphicon glyphicon-plus"></i> ver más!{" "}
                   </button>
                 </Link>
-                {/* <button
-                  onClick={() => setLike(!like)}
-                  class="btn btn-info btn-xs"
-                  style={{ marginLeft: "10px" }}
-                >
-                  <i class={ `${like ? 'fas' : 'far'} fa-thumbs-up `}></i>
-
-                </button> */}
               </div>
             </div>
           </div>

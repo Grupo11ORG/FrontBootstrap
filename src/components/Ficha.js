@@ -33,10 +33,15 @@ const Ficha = () => {
   }, []);
   return (
     <>
-<<<<<<< HEAD
       <div
         className="border border-primary"
-        style={{ marginTop: "5%", marginLeft: "10%", marginRight: "10%" }}
+        style={{
+          marginTop: "5%",
+          marginLeft: "20%",
+          marginRight: "20%",
+          paddingLeft: "80px",
+          paddingRight: "80px",
+        }}
       >
         <br></br>
         {Object.keys(datos).length > 0 && (
@@ -46,22 +51,6 @@ const Ficha = () => {
               <div className="form-group">
                 <h4>Nombre: {datos.datos_personales.nombre_completo}</h4>
               </div>
-=======
-    <div className="border border-primary" style={{marginTop:"4%", marginLeft: "10%" , marginRight:"10%"}}>
-      <br></br>
-      {Object.keys(datos).length > 0 && (
-        <div key={datos._id}  style={{marginLeft:"5%" }}>
-          <div className="form-group" key={datos._id}>
-            <h1>Datos del técnico</h1>
-            <div className="form-group">
-              <h4>Nombre: {datos.datos_personales.nombre_completo}</h4>
-            </div>
-
-            <div className="form-group" key={datos._id}>
-              <h4>Sexo: Masculino</h4>
-              {/* <h4>Sexo: {datos.datos_personales.sexo}</h4> */}
-            </div>
->>>>>>> 42df27063c95c75809ea22a94f402332380f258d
 
               <div className="form-group" key={datos._id}>
                 {
@@ -120,7 +109,7 @@ const Ficha = () => {
               </div>
 
               <div className="form-group">
-                {datos.info_profesional.like > 0 ? (
+                {datos.info_profesional.likes > 0 ? (
                   <h4>Likes: {datos.info_profesional.likes}</h4>
                 ) : (
                   <h4>Likes: 0</h4>
@@ -128,9 +117,9 @@ const Ficha = () => {
                 <button
                   onClick={() => setLike(!like)}
                   class="btn btn-primary btn-lg"
-                  style={{ marginLeft: "80%", marginBottom:"3%" }}
+                  style={{ marginLeft: "80%", marginBottom: "3%" }}
                 >
-                  <i class={`${like ? "fas" : "far"} fa-thumbs-up `}></i>
+                  <i className={`${like ? "fas" : "far"} fa-thumbs-up `}></i>
                 </button>
               </div>
             </div>
