@@ -42,6 +42,67 @@ const PerfilTec = () => {
   const [form, setForm] = useState(initialForm);
   const [mostrarMensaje, setMostrarMensaje] = useState(null);
   const [tags, setTags] = useState([]);
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+    console.log(form);
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(valRegTec) });
+
+  const registrarnuevoUsuario = async () => {
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const options = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(form),
+      redirect: "follow",
+    };
+
+    fetch("https://tecnosearch.herokuapp.com/api/profesionales", options)
+      .then((res) => res.json())
+      .then(
+        (res) => {
+          if (!res.errores) {
+            console.log(res);
+            setMostrarMensaje({
+              message: "Usuario agregado correctamente",
+              style: "alert alert-success",
+            });
+
+            setTimeout(() => {
+              setMostrarMensaje(null);
+              history.push("/home");
+            }, 3000);
+          } else {
+            setMostrarMensaje({
+              message: "El usuario ya existe",
+              style: "alert alert-danger",
+            });
+
+            setTimeout(() => {
+              setMostrarMensaje(null);
+            }, 3000);
+          }
+        },
+        (errors) => {
+          console.log(errors);
+        }
+      );
+
+    // console.log(options);
+  };
+
+
   return (
     <Container>
       <form
