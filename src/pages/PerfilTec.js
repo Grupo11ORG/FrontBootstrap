@@ -26,10 +26,10 @@ const initialForm = {
     dias_atencion: "",
     horario_atencion: "",
     direccion: "",
-    marcador: {
-      latitud: "",
-      longitud: "",
-    },
+    // marcador: {
+    //   latitud: "",
+    //   longitud: "",
+    // },
   },
 };
 
@@ -57,7 +57,7 @@ const PerfilTec = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(valRegTec) });
 
-  const registrarnuevoUsuario = async () => {
+  const registrarnuevoTec = async () => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -107,7 +107,7 @@ const PerfilTec = () => {
     <Container>
       <form
         className="container rounded bg-orange mt-5 mb-5"
-        onSubmit={handleSubmit(registrarnuevoUsuario)}
+        onSubmit={handleSubmit(registrarnuevoTec)}
       >
         <div className="row">
           <div className="col-md-3 border-right">
@@ -207,7 +207,7 @@ const PerfilTec = () => {
                       placeholder="Describa sus certificaciones"
                     />
                   </div>
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <label className="labels"></label>
                     <input
                       id="img_certif"
@@ -215,7 +215,7 @@ const PerfilTec = () => {
                       name="img_certif"
                       type="file"
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-md-12">
                   <label className="labels">Rubro</label>
@@ -337,7 +337,7 @@ const PerfilTec = () => {
                 <button
                   className="btn btn-primary profile-button"
                   type="submit"
-                  onClick={handleSubmit(registrarnuevoUsuario)}
+                  onClick={handleSubmit(registrarnuevoTec)}
                 >
                   Save Profile
                 </button>
