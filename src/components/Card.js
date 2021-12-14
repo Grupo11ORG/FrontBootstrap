@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import TagInput from "./TagInput/TagInput";
 
-
 const Card = () => {
-  const [like, setLike] = useState(false)
+  const [like, setLike] = useState(false);
   const [tags, setTags] = useState([]);
   const [datos, setDatos] = useState([]);
 
@@ -50,10 +49,8 @@ const Card = () => {
               marginLeft: "20%",
               marginRight: "20%",
             }}
-            key={item._id}
           >
-            {(id = item._id)}
-            <div className="card text-center" key={item._id}>
+            <div className="card text-center">
               <div className="card-header">
                 <h3>{item.datos_personales.nombre_completo}</h3>
               </div>
@@ -65,7 +62,7 @@ const Card = () => {
                 <p className="card-text">{item.info_profesional.rubros}</p>
               </div>
               <div className="card-footer text-muted">
-                <Link to={"/ficha/" + id}>
+                <Link to={"/ficha/" + item._id}>
                   <button
                     className="btn btn-primary btn-xs"
                     style={{ marginLeft: "60%" }}
@@ -73,15 +70,14 @@ const Card = () => {
                     <i className="glyphicon glyphicon-plus"></i> ver más!{" "}
                   </button>
                 </Link>
-                <button
+                {/* <button
                   onClick={() => setLike(!like)}
                   class="btn btn-info btn-xs"
                   style={{ marginLeft: "10px" }}
                 >
                   <i class={ `${like ? 'fas' : 'far'} fa-thumbs-up `}></i>
 
-                </button>
-
+                </button> */}
               </div>
             </div>
           </div>
